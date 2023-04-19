@@ -1,5 +1,7 @@
 import './App.css'
 import { ReactNode } from 'react'
+import Footer from './features/ui/Footer'
+import Header from './features/ui/Header'
 
 function App({
   children
@@ -8,9 +10,9 @@ function App({
 }) {
   return (
     <div className="App">
-      <header> 헤더 </header>
+      <Header />
       {children}
-      <footer> 푸터 </footer>
+      <Footer />
     </div >
   )
 }
