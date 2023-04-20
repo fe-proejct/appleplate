@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Search from './pages/search';
+
 import RestaurantDetail from './pages/restaurantDetail';
+import Search from './pages/search';
 import Main from './pages/main';
 import Layout from './layout';
+
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 
