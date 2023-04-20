@@ -4,7 +4,9 @@ import React from 'react';
 import styled from 'styled-components';
 import CarousleOptions from '../options/carouselOptions';
 
-const CarouselWrap = styled.div`
+const CarouselWrap = styled.div<{
+    padding?: number | string
+}>`
     height: 100%;
 
     button {
@@ -14,9 +16,11 @@ const CarouselWrap = styled.div`
 
     .splide {
         padding-top: 0;
-        padding-left: 0;
-        padding-right: 0;
         padding-bottom: 0;
+
+        padding-right: ${e => e.padding ?? 0};
+        padding-left: ${e => e.padding ?? 0};
+
         height: 100%;
         align-items: center;
         display: flex;
@@ -104,7 +108,7 @@ export default function Carousel({
     }
 
     return (
-        <CarouselWrap>
+        <CarouselWrap padding={option?.padding}>
             <Splide
                 hasTrack={false}
                 options={{

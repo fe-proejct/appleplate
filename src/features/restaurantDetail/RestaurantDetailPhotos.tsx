@@ -14,7 +14,7 @@ export default function RestaurantDetailPhotos() {
                 perMove: 1,
                 showDisabledArrow: false,
                 showPageNation: true,
-                // focus: 0,
+                focus: 0,
                 omitEnd: true,
                 autoWidth: true,
             }}>

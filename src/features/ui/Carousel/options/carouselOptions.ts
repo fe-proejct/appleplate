@@ -45,6 +45,11 @@ interface CarousleOptions extends Options {
     * 한 페이지에 여러개의 슬라이드가 있는 경우에 대상으로 할 슬라이드의 번호를 결정합니다
     */
     focus?: number | 'center';
+
+    /**
+     * 양 옆에 `Padding` 을 줍니다
+     */
+    padding?: number | string;
 }
 
 export default CarousleOptions;
