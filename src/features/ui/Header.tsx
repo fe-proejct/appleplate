@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const StyledHeader = styled.header`
     background-color: var(--background-color);
-    color : white;
+    color : ${(props) => props.theme.colors.second};
     width: 100vw;
     height: 60px;
     position : sticky;
