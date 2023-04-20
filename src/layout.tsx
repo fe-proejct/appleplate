@@ -5,11 +5,11 @@ import Header from "./features/ui/Header";
 
 export default function Layout() {
   return (
-    <div>
+    <>
       <GlobalStyle />
       <Header />
       <Outlet />
       <Footer />
-    </div>
+    </>
   )
 }
