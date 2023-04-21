@@ -5,63 +5,60 @@ module.exports = {
     node: true,
   },
   extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:import/errors',
-    'plugin:import/recommended',
-    'plugin:@typescript-eslint/recommended',
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
   ],
   overrides: [],
-  parser: '@typescript-eslint/parser',
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+    ecmaVersion: "latest",
+    sourceType: "module",
   },
-  plugins: [
-    'react',
-    'react-hooks',
-    '@typescript-eslint',
-    'import',
-  ],
+  plugins: ["react", "react-hooks", "@typescript-eslint", "import", "prettier"],
   rules: {
-    indent: ['error', 2],
-    'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
-    semi: ['error', 'always'],
-    'react/react-in-jsx-scope': 'off',
-    'react/jsx-uses-vars': 'error',
-    'react/jsx-uses-react': 'off',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    'react/jsx-filename-extension': [
+    "prettier/prettier": "error",
+    indent: ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    quotes: ["error", "double"],
+    semi: ["error", "always"],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-vars": "error",
+    "react/jsx-uses-react": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-filename-extension": [
       1,
-      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+      { extensions: [".js", ".jsx", ".ts", ".tsx"] },
     ],
-    'import/no-unresolved': 'warn',
-    'import/order': [
-      'error',
+    "import/no-unresolved": "warn",
+    "import/order": [
+      "error",
       {
-        groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
+        groups: ["builtin", "external", "parent", "sibling", "index"],
         alphabetize: {
-          order: 'asc',
+          order: "asc",
           caseInsensitive: true,
         },
-        'newlines-between': 'never',
+        "newlines-between": "never",
       },
     ],
   },
-  'settings': {
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx']
+  settings: {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"],
     },
-    'import/resolver': {
-      'typescript': {
-        'alwaysTryTypes': true,
-        'project': './tsconfig.json',
-      }
-    }
-  }
+    "import/resolver": {
+      typescript: {
+        alwaysTryTypes: true,
+        project: "./tsconfig.json",
+      },
+    },
+  },
 };

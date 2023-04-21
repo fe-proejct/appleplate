@@ -1,7 +1,3 @@
 export default function Main() {
-  return (
-    <div>
-      메인화면
-    </div>
-  );
+  return <div>메인화면</div>;
 }
