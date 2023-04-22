@@ -45,7 +45,7 @@ const StyleLogo = styled.a`
     }
 `
 
-const StyleNav = styled.ul`
+const StyleNav = styled.div`
     height:100%;
 
     //데스크탑
@@ -59,11 +59,25 @@ const StyleNav = styled.ul`
     //모바일
     @media ${(props) => props.theme.device.mobile} {
         width:45px;
-        border:1px solid blue;
         margin-left:0px;
-        display:block;
+        display:flex;
+        justify-content:center;
+        height:75%;
     }
     
+`
+
+const StyleNavImg = styled.img`
+  //데스크탑
+    @media ${(props) => props.theme.device.desktop} {
+        display:none;
+    }
+
+    //모바일
+    @media ${(props) => props.theme.device.mobile} {
+      width:85%;
+      height:100%;
+    }
 `
 
 const StyleNavItem = styled.li`
@@ -85,7 +99,6 @@ const StyleProfileList = styled.ul`
 
     //모바일
     @media ${(props) => props.theme.device.mobile} {
-        border:1px solid red;
         width:45px;
     }
     height:100%;
@@ -94,7 +107,7 @@ const StyleProfileList = styled.ul`
     align-items:center;
     position:relative;
 `
-const StyleProfileButton = styled.button`
+const StyleProfileImg = styled.img`
     width:38px;
     height:38px;
     border:3px solid ${(props) => props.theme.colors.primary};
@@ -131,13 +144,13 @@ export default function Header() {
                 P L A T E
             </StyleLogo>
             <StyleNav>
-
+              <StyleNavImg src="/icons/menu.png"/>
             </StyleNav>
             <StyleProfileList>
-                <StyleProfileButton onClick={() => {
+                <StyleProfileImg src="/icons/profile.png" onClick={() => {
                     
                 }}>
-                </StyleProfileButton>
+                </StyleProfileImg>
             </StyleProfileList>
         </StyledHeader>
     )
