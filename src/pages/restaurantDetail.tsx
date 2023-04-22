@@ -5,12 +5,21 @@ import styled from "styled-components";
 import RestaurantSidebar from "../features/restaurantDetail/RestaurantSidebar";
 import RestaurantDetailPhotos from "../features/restaurantDetail/RestaurantDetailPhotos";
 
+
+const StyledRestaurantDetail = styled.div`
+    min-width: 1200px;
+    list-style : none;
+`;
+
 const RestaurantData = styled.section`
-    width: 800px;
     margin: 0 auto;
     margin-top: 20px;
     padding : 0 20px;
-    flex : 1;
+    width: calc(100% - 400px);
+    flex: 1;
+    float: left;
+
+
 `;
 
 const ContentWrap = styled.section`
@@ -18,12 +27,11 @@ const ContentWrap = styled.section`
     
 `;
 
-const StyledRestaurantDetail = styled.div`
-    
-`;
 
 export default function RestaurantDetail() {
     const { id } = useParams();
+
+
 
     return (
         <StyledRestaurantDetail>

@@ -5,6 +5,10 @@ const StyledRestaurantSidebar = styled.div`
     position: relative;
     float: right;
     width: 400px;
+
+    @media ${e => e.theme.device.mobile} {
+        display: none;
+    }
 `;
 
 const KakaoMap = styled.div`
@@ -21,7 +25,6 @@ export default function RestaurantSidebar() {
         <StyledRestaurantSidebar>
             <KakaoMap>
                 카카오 지도 들어갈곳
-
             </KakaoMap>
         </StyledRestaurantSidebar>
     )

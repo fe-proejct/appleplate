@@ -2,9 +2,10 @@ import styled from "styled-components"
 import Carousel from "../ui/Carousel/component/Carousel";
 import '@splidejs/react-splide/css/sea-green';
 const StyledRestaurantDetailPhotos = styled.div`
-    background-color: grey;
     width: 100%;
+    position: relative;
     height: 340px;
+    margin-bottom: 6px;
 `;
 
 export default function RestaurantDetailPhotos() {
@@ -13,10 +14,11 @@ export default function RestaurantDetailPhotos() {
             <Carousel option={{
                 perMove: 1,
                 showDisabledArrow: false,
-                showPageNation: true,
+                showPageNation: false,
                 focus: 0,
                 omitEnd: true,
                 autoWidth: true,
+                gap: 6,
             }}>
                 <img src="/images/test/1.jpeg" alt="Image 1" />
                 <img src="/images/test/2.jpeg" alt="Image 1" />

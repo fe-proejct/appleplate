@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
-const StyledDetailTable = styled.table`
+const StyledDetailTableWrap = styled.div`
     padding: 20px 0;
     border-top: 1px solid #e9e9e9;
     border-bottom: 1px solid #e9e9e9;
     width: 100%;
+    margin-top: 15px;
+
+`;
+
+const StyledDetailTable = styled.table`
+  
 
     th {
         width: 110px;
@@ -36,44 +42,56 @@ const StyledDetailTable = styled.table`
     }
 `;
 
+const StyledAdress = styled.tr`
+
+`;
+
+function Adress() {
+    return <StyledAdress>
+        <th>주소</th>
+        <td>충청남도 천안시 서북구 성환읍 성환중앙로 33<br />
+            <span className="rectangle">지번</span>
+            <span >충청남도 천안시 서북구 성환읍 성환리 449-19</span>
+        </td>
+    </StyledAdress>
+}
+
 export default function RestaurantDetailTable() {
     return (
-        <StyledDetailTable>
-            <tbody>
-                <tr>
-                    <th>주소</th>
-                    <td>충청남도 천안시 서북구 성환읍 성환중앙로 33<br />
-                        <span className="rectangle">지번</span>
-                        <span >충청남도 천안시 서북구 성환읍 성환리 449-19</span>
-                    </td>
-                </tr>
-                <tr>
-                    <th>전화번호</th>
-                    <td>041-581-2070</td>
-                </tr>
-                <tr>
-                    <th>음식 종류</th>
-                    <td>
-                        <span>정통 중식 / 일반 중식</span>
-                    </td>
-                </tr>
-                <tr>
-                    <th>가격대</th>
-                    <td>만원 미만</td>
-                </tr>
-                <tr>
-                    <th>주차</th>
-                    <td>주차공간없음 </td>
-                </tr>
-                <tr>
-                    <th>영업시간</th>
-                    <td>11:00 - 20:10</td>
-                </tr>
-                <tr>
-                    <th>휴일</th>
-                    <td>월</td>
-                </tr>
-            </tbody>
-        </StyledDetailTable>
+        <StyledDetailTableWrap>
+
+            <StyledDetailTable>
+                <tbody>
+                    <Adress />
+                    <tr>
+                        <th>전화번호</th>
+                        <td>041-581-2070</td>
+                    </tr>
+                    <tr>
+                        <th>음식 종류</th>
+                        <td>
+                            <span>정통 중식 / 일반 중식</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>가격대</th>
+                        <td>만원 미만</td>
+                    </tr>
+                    <tr>
+                        <th>주차</th>
+                        <td>주차공간없음 </td>
+                    </tr>
+                    <tr>
+                        <th>영업시간</th>
+                        <td>11:00 - 20:10</td>
+                    </tr>
+                    <tr>
+                        <th>휴일</th>
+                        <td>월</td>
+                    </tr>
+                </tbody>
+            </StyledDetailTable>
+        </StyledDetailTableWrap>
+
     )
 }
