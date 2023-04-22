@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { LogoText } from "../../constants/constant";
 
 const StyledHeader = styled.header`
     background-color: #fff;
@@ -140,8 +141,7 @@ export default function Header() {
     return (
         <StyledHeader>
             <StyleLogo href="#">
-                A P P L E<br/>
-                P L A T E
+                { LogoText }
             </StyleLogo>
             <StyleNav>
               <StyleNavImg src="/icons/menu.png"/>

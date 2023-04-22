@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { LogoText, Slogan, CompanyName, Address, PhoneNumber,FAQ, CopyRight } from "../../constants/constant"
 
 const StyledFooter = styled.footer`
     background-color: var(--background-color);
@@ -102,20 +103,19 @@ export default function Footer() {
         <StyledFooter>
             <StyleFooterContent>
                 <StyleLogo>
-                    A P P L E<br/>
-                    P L A T E
+                    { LogoText }
                 </StyleLogo>
                 <StyleLine/>
                 <StyleSlogan>
-                    Eat, share, Be happy
+                    { Slogan }
                 </StyleSlogan>
                 <StyleCompanyInfo>
-                    <StyleCompanyInfoTxt>상호명: APPLEPLATE</StyleCompanyInfoTxt>
-                    <StyleCompanyInfoTxt>주소: 대한민국 서울</StyleCompanyInfoTxt>
-                    <StyleCompanyInfoTxt>전화번호: 000-1111-2222</StyleCompanyInfoTxt>
-                    <StyleCompanyInfoTxt>고객센터: 0000</StyleCompanyInfoTxt>
+                    <StyleCompanyInfoTxt>{ CompanyName }</StyleCompanyInfoTxt>
+                    <StyleCompanyInfoTxt>{ Address }</StyleCompanyInfoTxt>
+                    <StyleCompanyInfoTxt>{ PhoneNumber }</StyleCompanyInfoTxt>
+                    <StyleCompanyInfoTxt>{ FAQ }</StyleCompanyInfoTxt>
                 </StyleCompanyInfo>
-                <StyleSlogan>@ 2023 ApplePlate All rights reserved.</StyleSlogan>
+                <StyleSlogan>{ CopyRight }</StyleSlogan>
             </StyleFooterContent>
         </StyledFooter>
     )
