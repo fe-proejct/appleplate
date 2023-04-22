@@ -15,7 +15,7 @@ export default function RestaurantDetailPhotos() {
         option={{
           perMove: 1,
           showDisabledArrow: false,
-          showPageNation: true,
+          showPageNation: false,
           focus: 0,
           omitEnd: true,
           autoWidth: true,

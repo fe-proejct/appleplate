@@ -6,6 +6,9 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     --background-color: #242424;
+    --sprites_desktop : url("/images/sprites_desktop.png");
+    --sprites_mobile : url("/images/sprites_mobile.png");
+
     color: black;
   }
 
