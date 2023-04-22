@@ -16,7 +16,10 @@ const SectionStyle = styled.section`
   }
 `;
 
-export default function Section({ title, children }: {
+export default function Section({
+  title,
+  children,
+}: {
   title: string;
   children: React.ReactNode;
 }) {

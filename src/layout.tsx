@@ -1,10 +1,9 @@
 import { Outlet } from "react-router-dom";
-import GlobalStyle from "./styles/global-styles";
-import { theme } from './styles/theme';
-
+import { ThemeProvider } from "styled-components";
 import Footer from "./features/ui/Footer";
 import Header from "./features/ui/Header";
-import { ThemeProvider } from "styled-components";
+import GlobalStyle from "./styles/global-styles";
+import { theme } from "./styles/theme";
 
 export default function Layout() {
   return (
@@ -14,5 +13,5 @@ export default function Layout() {
       <Outlet />
       <Footer />
     </ThemeProvider>
-  )
+  );
 }

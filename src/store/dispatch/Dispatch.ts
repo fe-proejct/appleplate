@@ -1,5 +1,5 @@
 import { useAppDispatch } from "../store";
 
-export const dispatch = () => {
-    return useAppDispatch();
-}
+export const useDispatch = () => {
+  return useAppDispatch();
+};

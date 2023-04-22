@@ -1,6 +1,6 @@
-import MainHeader from '../features/main/MainHeader';
-import MainSearchBar from '../features/main/MainSearchbar';
-import Section from '../features/main/Section';
+import MainHeader from "../features/main/MainHeader";
+import MainSearchBar from "../features/main/MainSearchbar";
+import Section from "../features/main/Section";
 
 export default function Main() {
   return (
@@ -9,8 +9,8 @@ export default function Main() {
         <MainSearchBar />
       </MainHeader>
       <Section title="">
-
+        <div></div>
       </Section>
     </>
-  )
+  );
 }
