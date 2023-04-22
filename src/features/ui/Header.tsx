@@ -132,8 +132,8 @@ const StyleHistoryCnt = styled.span`
 `
 const StyleMaskingPage = styled.div`
     width:100vw;
-    height:100vh
-    background-color: var(--background-color:white);
+    height:100vh;
+    background-color: var(--background-color, white);
     opacity: 0.5;
 `
 export default function Header() {
