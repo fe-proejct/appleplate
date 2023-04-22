@@ -20,9 +20,17 @@ const device = {
   desktop: `(min-width: ${deviceSizes.desktop})`,
 };
 
+const sprite = {
+  desktop: "/images/sprites_desktop.png",
+  mobile: "/images/sprites_mobile.png",
+}
+
 export type ColorsTypes = typeof colors;
 export type DeviceTypes = typeof device;
+export type SpriteTypes = typeof sprite;
+
 export const theme: DefaultTheme = {
   colors,
   device,
+  sprite,
 };

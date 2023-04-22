@@ -52,14 +52,14 @@ const Status = styled.div`
     display: inline-block;
     width: 19px;
     height: 13px;
-    background-image: var(--sprites_desktop);
+    background-image: url(${e => e.theme.sprite.desktop});
     background-position: -974px -817px;
   }
 
   .review:before {
     content: "";
     display: inline-block;
-    background-image: var(--sprites_desktop);
+    background-image: url(${e => e.theme.sprite.desktop});
     background-position: -800px -648px;
     width: 12px;
     height: 13px;
@@ -68,7 +68,7 @@ const Status = styled.div`
   .favorite:before {
     content: "";
     display: inline-block;
-    background-image: var(--sprites_desktop);
+    background-image: url(${e => e.theme.sprite.desktop});
     background-position: -828px -774px;
     width: 14px;
     height: 13px;
@@ -110,7 +110,7 @@ const ActionButtons = styled.div`
   }
 
   .favorite_button_icon {
-    background-image: var(--sprites_desktop);
+    background-image: url(${e => e.theme.sprite.desktop});
     background-position: -935px -583px;
     display: block;
     width: 32px;

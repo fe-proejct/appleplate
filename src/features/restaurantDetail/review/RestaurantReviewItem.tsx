@@ -83,7 +83,7 @@ const UserStat = styled.ul`
 
     .review {
         &::before {
-            background-image: var(--sprites_desktop);
+            background-image: url(${e => e.theme.sprite.desktop});
             background-position: -996px -600px;
             width: 9px;
             height: 8px;
@@ -92,7 +92,7 @@ const UserStat = styled.ul`
 
     .follower {
         &::before {
-            background-image: var(--sprites_desktop);
+            background-image: url(${e => e.theme.sprite.desktop});
             background-position: -998px -729px;
             width: 8px;
             height: 8px;
@@ -174,13 +174,13 @@ const Badge = styled.div`
     &::before {
         content: '';
         margin: 0 8px 10px;
-        background-image: var(--sprites_desktop);
+        background-image: url(${e => e.theme.sprite.desktop});
         background-position: -714px -866px;
         width: 44px;
         height: 44px;
 
         @media ${e => e.theme.device.mobile} {
-            background-image: var(--sprites_mobile);
+            background-image: url(${e => e.theme.sprite.mobile});
             background-position: -102px -539px;
             width: 30px;
             height: 30px;
