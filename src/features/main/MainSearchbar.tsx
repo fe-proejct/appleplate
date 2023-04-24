@@ -2,14 +2,16 @@ import { useCallback, useState } from "react";
 import styled from "styled-components";
 
 const SearchBarStyle = styled.form`
+  --height: 54px;
+
   position: relative;
   z-index: 1;
-  height: 50px;
+  height: var(--height);
   width: 738px;
   margin: 45px auto 0 auto;
   background: white;
   border: 2px solid red;
-  border-radius: 25px;
+  border-radius: calc(var(--height) / 2);
 
   fieldset {
     display: flex;
@@ -58,7 +60,7 @@ const SearchBarStyle = styled.form`
       height: 100%;
       font-size: 1.313rem;
       font-weight: bold;
-      border-radius: 25px;
+      border-radius: calc(var(--height) / 2);
       color: white;
       background: ${({ theme }) => theme.colors.primary};
       cursor: pointer;
@@ -72,13 +74,6 @@ const SearchBarStyle = styled.form`
 
 function MainSearchBar() {
   const [keyword, setKeyword] = useState("");
-
-  const handleChangeInput = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      setKeyword(event.target.value);
-    },
-    []
-  );
 
   const handleClickButton = useCallback(() => {
     setKeyword("");
@@ -94,15 +89,20 @@ function MainSearchBar() {
             type="text"
             value={keyword}
             placeholder="지역, 식당 또는 음식"
-            onChange={handleChangeInput}
+            onChange={() => {}}
           />
           {keyword ? (
             <button type="button" className="clear" onClick={handleClickButton}>
               CLEAR
             </button>
           ) : null}
+
+          <div className="keywordSuggester--container">
+            <div className="keywordSuggester--tab"></div>
+            <div className="keywordSuggester--tabBoard"></div>
+          </div>
         </label>
-        <button>검색</button>
+        <button type="submit">검색</button>
       </fieldset>
     </SearchBarStyle>
   );

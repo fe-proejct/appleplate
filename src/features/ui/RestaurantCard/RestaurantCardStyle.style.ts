@@ -72,6 +72,41 @@ const RestaurantCardStyle = styled.figure`
       }
     }
   }
+
+  @media ${(props) => props.theme.device.mobile} {
+    .thumb {
+      padding-bottom: calc(100%);
+    }
+
+    figcaption {
+      padding-top: 6px;
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+
+      font-size: 1rem;
+      line-height: 1.3em;
+
+      &--score {
+        font-size: 1.2rem;
+      }
+    }
+
+    .info {
+      margin-top: 3px;
+      font-size: 0.75rem;
+      line-height: 1.3em;
+      color: ${({ theme }) => theme.colors.secondText};
+    }
+
+    .count {
+      font-size: 0.7rem;
+      line-height: 1.3em;
+      color: ${({ theme }) => theme.colors.thirdText};
+    }
+  }
 `;
 
 export default RestaurantCardStyle;

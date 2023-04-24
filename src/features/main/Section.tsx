@@ -3,7 +3,7 @@ import styled from "styled-components";
 const SectionStyle = styled.section`
   border-top: 1px solid #dbdbdb;
   padding: 38px 0 36px 0;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
 
   h2 {
@@ -12,7 +12,20 @@ const SectionStyle = styled.section`
   }
 
   > div {
-    margin: 27px 20px 0;
+    margin-top: 27px;
+  }
+
+  @media ${(props) => props.theme.device.mobile} {
+    padding: 26px 15px 22px 15px;
+    max-width: 100%;
+
+    h2 {
+      font-size: 1.125rem;
+    }
+
+    > div {
+      margin-top: 20px;
+    }
   }
 `;
 

@@ -5,6 +5,8 @@ const HeaderStyle = styled.header`
   padding: 150px 0;
   background-image: url("https://mp-seoul-image-production-s3.mangoplate.com/a4283e5725fb56755b9bbeb8f285d0dc.jpg");
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &:before {
     content: "";
