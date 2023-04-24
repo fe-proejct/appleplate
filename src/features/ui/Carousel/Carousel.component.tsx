@@ -1,10 +1,14 @@
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css/sea-green";
 import styled from "styled-components";
-import CarousleOptions from "../options/carouselOptions";
+import CarousleOptions from "./carousel.options";
 
 const CarouselWrap = styled.div<{
-  padding?: number | string;
+  padding?: {
+    bottom?: number | string | undefined,
+    top?: number | string | undefined,
+    horizontal?: number | string | undefined,
+  };
 }>`
   height: 100%;
 
@@ -14,11 +18,10 @@ const CarouselWrap = styled.div<{
   }
 
   .splide {
-    padding-top: 0;
-    padding-bottom: 0;
-
-    padding-right: ${(e) => e.padding ?? 0};
-    padding-left: ${(e) => e.padding ?? 0};
+    padding-top: ${(e) => e.padding?.top ?? 0};
+    padding-bottom: ${(e) => e.padding?.bottom ?? 0};;
+    padding-right: ${(e) => e.padding?.horizontal ?? 0};
+    padding-left: ${(e) => e.padding?.horizontal ?? 0};
 
     height: 100%;
     align-items: center;
@@ -99,17 +102,19 @@ export default function Carousel({
   option?: CarousleOptions | undefined;
 }) {
   const classes = {
-    pagination: `splide__pagination ${
-      option?.showPageNation ?? true ? "" : "pagenation"
-    }  `,
-    arrow: `splide__arrow ${
-      option?.showDisabledArrow ?? true ? "" : "custom_arrow"
-    }`,
+    pagination: `splide__pagination ${option?.showPageNation ?? true ? "" : "pagenation"
+      }  `,
+    arrow: `splide__arrow ${option?.showDisabledArrow ?? true ? "" : "custom_arrow"
+      }`,
     page: "page_button",
   };
 
   return (
-    <CarouselWrap padding={option?.padding}>
+    <CarouselWrap padding={{
+      top: option?.paddingTop,
+      bottom: option?.paddingBottom,
+      horizontal: option?.paddingHorizontal,
+    }}>
       <Splide
         hasTrack={false}
         options={{
