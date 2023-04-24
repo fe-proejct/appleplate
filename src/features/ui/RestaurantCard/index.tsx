@@ -1,3 +1,4 @@
+import { memo } from "react";
 import IRestaurant from "./RestaurantCard.interface";
 import RestaurantCardStyle from "./RestaurantCardStyle.style";
 
@@ -43,4 +44,4 @@ function RestaurantCard({
   );
 }
 
-export default RestaurantCard;
+export default memo(RestaurantCard);
