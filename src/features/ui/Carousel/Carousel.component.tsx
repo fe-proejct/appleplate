@@ -45,7 +45,7 @@ const CarouselWrap = styled.div<{
       display: block;
       content: "";
       border-radius: 50%;
-      background-color: ${(e) => e.theme.colors.lightGrayBg};
+      background-color: #9b9b9b;
     }
   }
 
@@ -68,7 +68,9 @@ const CarouselWrap = styled.div<{
 
   .splide__arrow svg {
     fill: ${(e) => e.theme.colors.primary};
-
+    margin-bottom: 10px;
+    margin-top: ${(e) => e.padding?.top ?? 0};
+    margin-bottom: ${(e) => e.padding?.bottom ?? 0};;
     :hover {
       fill: ${(e) => e.theme.colors.second};
     }
@@ -77,7 +79,7 @@ const CarouselWrap = styled.div<{
 
 const ChildWrap = styled.div`
   height: 100%;
-  display: flex;
+  justify-content: center;
 
   > img {
     /* width: 100%; */
