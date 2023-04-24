@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import KakaoMap from "../ui/KakaoMap/KakaoMap";
-import { KakaoMapOptions } from "../ui/KakaoMap/options/KakaoMapOptions";
+import KakaoMap from "../ui/KakaoMap";
+import { KakaoMapOptions } from "../ui/KakaoMap/KakaoMap.options";
 
 const StyledRestaurantSidebar = styled.div`
   background-color: #f6f6f6;

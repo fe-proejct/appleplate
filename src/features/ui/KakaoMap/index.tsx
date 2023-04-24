@@ -1,5 +1,5 @@
 import { Map, MapMarker } from "react-kakao-maps-sdk";
-import { KakaoMapOptions } from "./options/KakaoMapOptions";
+import { KakaoMapOptions } from "./KakaoMap.options";
 import { useCallback, useMemo, useRef } from "react";
 
 export default function KakaoMap({
