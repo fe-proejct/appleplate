@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "styled-components";
 import MainHeader from "../features/main/MainHeader";
 import MainSearchBar from "../features/main/MainSearchbar";
 import Section from "../features/main/Section";
@@ -10,7 +9,6 @@ import IRestaurant from "../features/ui/RestaurantCard/RestaurantCard.interface"
 import Grid from "../styles/Grid.style";
 
 export default function Main() {
-  const { device } = useContext(ThemeContext);
   const [restaurantList, setRestaurantList] = useState<IRestaurant[]>([]);
 
   async function fetchRestaurantList() {
