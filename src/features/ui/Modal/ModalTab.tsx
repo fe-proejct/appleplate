@@ -13,7 +13,6 @@ const StyleProfileUl = styled.ul`
         margin-bottom:3px;
     }
 `
-
 const StyleProfileLi = styled.li`
     @media ${(props) => props.theme.device.desktop} {
         width:100%;
@@ -28,21 +27,21 @@ const StyleProfileLi = styled.li`
         margin-bottom:3px;
     }
 `
-
 const StyleModalTab = styled.div`
     text-decoration: none;
     color: ${(props) => props.theme.colors.primary};
     cursor:pointer;
 `
-
-interface PropsType {
-    recent:Boolean;
-    setRecent:React.Dispatch<React.SetStateAction<Boolean>>;
-    wish:Boolean;
-    setWish:React.Dispatch<React.SetStateAction<Boolean>>;
+export interface PropsType {
+    profile: {
+        recent:Boolean;
+        setRecent:React.Dispatch<React.SetStateAction<Boolean>>;
+        wish:Boolean;
+        setWish:React.Dispatch<React.SetStateAction<Boolean>>;
+    }
 }
 
-export const ModalTab = ({recent, setRecent, wish, setWish}:PropsType) => {
+export const ModalTab = ({recent, setRecent, wish, setWish}:PropsType['profile']) => {
     const recentStore = () => {
         setRecent(true);
         setWish(false);

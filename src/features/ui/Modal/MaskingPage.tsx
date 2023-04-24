@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { ProfileModal } from "../../headerModal/ProfileModal";
 import { useEffect, useState } from "react";
+import { Modal } from "./Modal";
 
-interface Props {
-    receive:any;
+export interface MakingProps {
+    openCheck:React.Dispatch<React.SetStateAction<Boolean>>;
     closeCheck:Boolean;
-    name:String;
+    name:string;
 }
 
 const StyleMaskingPage = styled.div`
@@ -23,18 +24,12 @@ const StyleMaskingDiv = styled.div`
     height:100%;
 `
 
-const StyleModalDiv = styled.div`
-    width:100%;
-    height:100%;
-    z-index:7;
-    position:fixed;
-`
-
-export const MaskingPage = (props: Props) => {
+export const MaskingPage = (props: MakingProps) => {
     const [closeModalData, setCloseModalData] = useState<Boolean>(props.closeCheck);
+    const {openCheck, closeCheck, name} = props
     const closeModal = () => {
         setCloseModalData(!closeModalData);
-        props.receive(!closeModalData);
+        openCheck(!closeModalData);
     }
 
     //스크롤 막기
@@ -52,19 +47,10 @@ export const MaskingPage = (props: Props) => {
     
     return (
         <StyleMaskingDiv>
-            { props.closeCheck === closeModalData && (
-                <StyleMaskingPage onClick={closeModal}>
-                    
-                </StyleMaskingPage>) 
-            }
+            { closeCheck === closeModalData && (<StyleMaskingPage onClick={closeModal}/>) }
             {
-                props.closeCheck === closeModalData && (
-                    <StyleModalDiv>
-                        {
-                            props.name === 'profile' ? (<ProfileModal/>) : 
-                            props.name === 'filter' ? "필터 모달" : null
-                        }
-                    </StyleModalDiv>
+                closeCheck === closeModalData && (
+                    <Modal value={props}/>
                 )
             }
         </StyleMaskingDiv>

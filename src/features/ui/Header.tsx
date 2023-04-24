@@ -151,7 +151,7 @@ export default function Header() {
                 <StyleProfileImg src="/icons/profile.png" onClick={profileModal}>
                 </StyleProfileImg>
                 <ModalPortal>
-                  {openProfileModal && (<MaskingPage receive={setOpenProfileModal} closeCheck={openProfileModal} name={'profile'}/>)}
+                  {openProfileModal && (<MaskingPage openCheck={setOpenProfileModal} closeCheck={openProfileModal} name={'profile'}/>)}
                 </ModalPortal>
             </StyleProfileList>
         </StyledHeader>
