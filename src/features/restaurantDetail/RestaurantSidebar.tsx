@@ -5,6 +5,11 @@ const StyledRestaurantSidebar = styled.div`
   position: relative;
   float: right;
   width: 400px;
+
+
+  @media  ${e => e.theme.device.mobile} {
+    display: none;
+    }
 `;
 
 const KakaoMap = styled.div`
