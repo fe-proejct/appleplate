@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { LogoText } from "../../constants/constant";
+import ModalPortal from "./Modal/ModalPortal";
+import { MaskingPage } from "./Modal/MaskingPage";
 
 const StyledHeader = styled.header`
     background-color: #fff;
@@ -130,14 +132,13 @@ const StyleHistoryCnt = styled.span`
     align-items:center;
     font-weight:600;
 `
-const StyleMaskingPage = styled.div`
-    width:100vw;
-    height:100vh;
-    background-color: var(--background-color, white);
-    opacity: 0.5;
-`
-export default function Header() {
 
+export default function Header() {
+    const [openProfileModal, setOpenProfileModal] = useState<Boolean>(false);
+
+    const profileModal = () => {
+      setOpenProfileModal(!openProfileModal);
+    }
     return (
         <StyledHeader>
             <StyleLogo href="#">
@@ -147,10 +148,11 @@ export default function Header() {
               <StyleNavImg src="/icons/menu.png"/>
             </StyleNav>
             <StyleProfileList>
-                <StyleProfileImg src="/icons/profile.png" onClick={() => {
-                    
-                }}>
+                <StyleProfileImg src="/icons/profile.png" onClick={profileModal}>
                 </StyleProfileImg>
+                <ModalPortal>
+                  {openProfileModal && (<MaskingPage receive={setOpenProfileModal} closeCheck={openProfileModal} name={'profile'}/>)}
+                </ModalPortal>
             </StyleProfileList>
         </StyledHeader>
     )
