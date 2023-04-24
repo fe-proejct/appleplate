@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import KakaoMap from "../ui/KakaoMap/KakaoMap";
+import { KakaoMapOptions } from "../ui/KakaoMap/options/KakaoMapOptions";
 
 const StyledRestaurantSidebar = styled.div`
   background-color: #f6f6f6;
@@ -18,10 +19,19 @@ const KakaoMapWrap = styled.div`
 `;
 
 export default function RestaurantSidebar() {
+  const KakaoMapOptions: KakaoMapOptions = {
+    markers: [
+      { lat: 33.604, lng: 126.795841 },
+      { lat: 33.55635, lng: 126.795841 },
+      { lat: 35.55605, lng: 127.795841 },
+      { lat: 33.55605, lng: 125.795841 }
+    ]
+  }
+
   return (
     <StyledRestaurantSidebar>
       <KakaoMapWrap>
-        <KakaoMap />
+        <KakaoMap options={KakaoMapOptions} />
       </KakaoMapWrap>
     </StyledRestaurantSidebar>
   );
