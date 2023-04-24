@@ -5,6 +5,7 @@ const StyledRestaurantDetailPhotos = styled.div`
   background-color: grey;
   width: 100%;
   height: 340px;
+  margin-bottom: 6px;
 `;
 
 export default function RestaurantDetailPhotos() {

@@ -1,9 +1,10 @@
-import 'styled-components';
-import { ColorsTypes, DeviceTypes } from './theme';
+import "styled-components";
+import { ColorsTypes, DeviceTypes, SpriteTypes } from "./theme";
 
-declare module 'styled-components' {
+declare module "styled-components" {
   export interface DefaultTheme {
     colors: ColorsTypes;
-    device: DeviceTypes
+    device: DeviceTypes;
+    sprite: SpriteTypes;
   }
 }
