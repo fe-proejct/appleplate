@@ -22,7 +22,7 @@ export default defineConfig(async ({ mode }: {
         minify: true,
         inject: {
           data: {
-            title: env.VITE_KAKAO_API,
+            kakaomapkey: env.VITE_KAKAO_API,
           }
         }
       }),
