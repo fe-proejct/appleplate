@@ -5,6 +5,7 @@ const StyledRestaurantDetailPhotos = styled.div`
   background-color: grey;
   width: 100%;
   height: 340px;
+  margin-bottom: 6px;
 `;
 
 export default function RestaurantDetailPhotos() {
@@ -14,7 +15,7 @@ export default function RestaurantDetailPhotos() {
         option={{
           perMove: 1,
           showDisabledArrow: false,
-          showPageNation: true,
+          showPageNation: false,
           focus: 0,
           omitEnd: true,
           autoWidth: true,
