@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import KakaoMap from "../ui/KakaoMap/KakaoMap";
 
 const StyledRestaurantSidebar = styled.div`
   background-color: #f6f6f6;
@@ -7,7 +8,7 @@ const StyledRestaurantSidebar = styled.div`
   width: 400px;
 `;
 
-const KakaoMap = styled.div`
+const KakaoMapWrap = styled.div`
   background-color: orange;
   width: 100%;
   aspect-ratio: 1;
@@ -19,7 +20,9 @@ const KakaoMap = styled.div`
 export default function RestaurantSidebar() {
   return (
     <StyledRestaurantSidebar>
-      <KakaoMap>카카오 지도 들어갈곳</KakaoMap>
+      <KakaoMapWrap>
+        <KakaoMap />
+      </KakaoMapWrap>
     </StyledRestaurantSidebar>
   );
 }
