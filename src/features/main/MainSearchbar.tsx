@@ -75,21 +75,34 @@ const SearchBarStyle = styled.form`
 function MainSearchBar() {
   const [keyword, setKeyword] = useState("");
 
+  const handleChangeInput = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setKeyword(e.target.value);
+    },
+    []
+  );
+
   const handleClickButton = useCallback(() => {
     setKeyword("");
   }, []);
 
   return (
-    <SearchBarStyle>
+    <SearchBarStyle
+      onSubmit={(e) => {
+        e.preventDefault();
+        // console.log(e.target.value);
+      }}
+    >
       <fieldset>
         <legend>전체 검색</legend>
         <label>
           <span className="search-icon"></span>
           <input
             type="text"
+            name="keyword"
             value={keyword}
             placeholder="지역, 식당 또는 음식"
-            onChange={() => {}}
+            onChange={handleChangeInput}
           />
           {keyword ? (
             <button type="button" className="clear" onClick={handleClickButton}>
