@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { recentHistory } from "../../../constants/constant";
 import { wishLocation } from "../../../constants/constant";
+import { useState } from "react";
 
-const StyleProfileUl = styled.ul`
+const StyleModalUl = styled.ul`
     @media ${(props) => props.theme.device.desktop} {
         width:100%;
         height:50px;
@@ -13,7 +14,7 @@ const StyleProfileUl = styled.ul`
         margin-bottom:3px;
     }
 `
-const StyleProfileLi = styled.li`
+const StyleModalLi = styled.li`
     @media ${(props) => props.theme.device.desktop} {
         width:100%;
         height:${(props) => props.className?.includes('active') ? '53px' : "50px"};
@@ -33,32 +34,38 @@ const StyleModalTab = styled.div`
     cursor:pointer;
 `
 export interface PropsType {
-    profile: {
-        recent:Boolean;
-        setRecent:React.Dispatch<React.SetStateAction<Boolean>>;
-        wish:Boolean;
-        setWish:React.Dispatch<React.SetStateAction<Boolean>>;
-    }
+    arr: {
+        key:number;
+        content:string;
+        checkClick:React.Dispatch<React.SetStateAction<number>>;
+        element:JSX.Element
+    }[]
 }
 
-export const ModalTab = ({recent, setRecent, wish, setWish}:PropsType['profile']) => {
-    const recentStore = () => {
-        setRecent(true);
-        setWish(false);
-    }
-    const hopePlace = () => {
-        setWish(true);
-        setRecent(false);
+export const ModalTab = ({arr}:PropsType) => {
+    //클릭한 엘리먼트에 active 클래스 추가
+    const [currentTab, setCurrentTab] = useState(0);
+    //탭 클릭
+    const recentStore = (index:number) => {
+        setCurrentTab(index)
+        arr.map((res,i) => {
+            if(index === i) {
+                res.checkClick((index));
+            } else {
+                res.checkClick((index));
+            }
+        })
     }
 
     return <>
-        <StyleProfileUl>
-            <StyleProfileLi onClick={recentStore}  className={recent === true ? 'active' : 'tab'}>
-                <StyleModalTab>{recentHistory}</StyleModalTab>
-            </StyleProfileLi>
-            <StyleProfileLi onClick={hopePlace} className={wish === true ? 'active' : 'tab'}>
-                <StyleModalTab>{wishLocation}</StyleModalTab>
-            </StyleProfileLi>
-        </StyleProfileUl>
+        <StyleModalUl>
+            {
+                arr.map((res,i) => (
+                    <StyleModalLi onClick={() => recentStore(i)} key={i} className={currentTab === i ? 'active' : 'tab'}>
+                        <StyleModalTab>{res.content}</StyleModalTab>
+                    </StyleModalLi>
+                ))
+            }
+        </StyleModalUl>
     </>
 }
