@@ -1,4 +1,3 @@
-import { checkEmailValidate, checkPasswordValidate } from "./utils";
 import { utilTestData } from "./utils.data";
 
 utilTestData.map(dataObj => {
