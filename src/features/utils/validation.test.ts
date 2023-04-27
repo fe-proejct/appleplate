@@ -1,4 +1,4 @@
-import { utilTestData } from "./utils.data";
+import { utilTestData } from "./validation.data";
 
 utilTestData.map(dataObj => {
     describe(dataObj.name, () => {

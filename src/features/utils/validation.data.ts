@@ -1,4 +1,4 @@
-import { checkEmailValidate, checkPasswordValidate, checkUserNameValidate } from "./utils"
+import { checkEmailValidate, checkPasswordValidate, checkUserNameValidate } from "./validation"
 
 const utilTestData = [
   {
