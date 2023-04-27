@@ -1,13 +1,7 @@
 import styled from "styled-components";
 
 const StyledRestaurantHeader = styled.header`
-  > button {
-    appearance: none;
-    cursor: pointer;
-    border: 0px;
-    border-radius: 0;
-    background-color: transparent;
-  }
+  padding : 0 20px;
 `;
 
 const TitleWrap = styled.div`
@@ -58,23 +52,23 @@ const Status = styled.div`
     display: inline-block;
     width: 19px;
     height: 13px;
-    background-image: url("/images/sprites.png");
+    background-image: url(${e => e.theme.sprite.desktop});
     background-position: -974px -817px;
   }
 
   .review:before {
-    display: inline-block;
     content: "";
-    background-image: url("/images/sprites.png");
+    display: inline-block;
+    background-image: url(${e => e.theme.sprite.desktop});
     background-position: -800px -648px;
     width: 12px;
     height: 13px;
   }
 
   .favorite:before {
-    display: inline-block;
     content: "";
-    background-image: url("/images/sprites.png");
+    display: inline-block;
+    background-image: url(${e => e.theme.sprite.desktop});
     background-position: -828px -774px;
     width: 14px;
     height: 13px;
@@ -116,7 +110,7 @@ const ActionButtons = styled.div`
   }
 
   .favorite_button_icon {
-    background-image: url("/images/sprites.png");
+    background-image: url(${e => e.theme.sprite.desktop});
     background-position: -935px -583px;
     display: block;
     width: 32px;
