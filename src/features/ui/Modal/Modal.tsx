@@ -16,8 +16,7 @@ export const Modal = (propsData:ModalProps) => {
     return <>
         <StyleModalDiv>
             {
-                propsData.value.name === 'profile' ? (<ProfileModal/>) : 
-                propsData.value.name === 'filter' ? "필터 모달" : null
+                (propsData.value.element)
             }
         </StyleModalDiv>
     </>

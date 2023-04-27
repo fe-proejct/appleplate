@@ -3,6 +3,7 @@ import { useState } from "react";
 import { LogoText } from "../../constants/constant";
 import ModalPortal from "./Modal/ModalPortal";
 import { MaskingPage } from "./Modal/MaskingPage";
+import { ProfileModal } from "../headerModal/ProfileModal";
 
 const StyledHeader = styled.header`
     background-color: #fff;
@@ -151,7 +152,7 @@ export default function Header() {
                 <StyleProfileImg src="/icons/profile.png" onClick={profileModal}>
                 </StyleProfileImg>
                 <ModalPortal>
-                  {openProfileModal && (<MaskingPage openCheck={setOpenProfileModal} closeCheck={openProfileModal} name={'profile'}/>)}
+                  {openProfileModal && (<MaskingPage openCheck={setOpenProfileModal} closeCheck={openProfileModal} name={'profile'} element={<ProfileModal/>}/>)}
                 </ModalPortal>
             </StyleProfileList>
         </StyledHeader>

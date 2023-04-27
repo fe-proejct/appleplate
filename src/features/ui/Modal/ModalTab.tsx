@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { recentHistory } from "../../../constants/constant";
-import { wishLocation } from "../../../constants/constant";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import debug from "debug";
 
 const StyleModalUl = styled.ul`
     @media ${(props) => props.theme.device.desktop} {
@@ -34,38 +33,47 @@ const StyleModalTab = styled.div`
     cursor:pointer;
 `
 export interface PropsType {
-    arr: {
+    tabs: {
         key:number;
         content:string;
-        checkClick:React.Dispatch<React.SetStateAction<number>>;
         element:JSX.Element
     }[]
 }
 
-export const ModalTab = ({arr}:PropsType) => {
+const ModalTab = ({tabs}:PropsType) => {
     //클릭한 엘리먼트에 active 클래스 추가
-    const [currentTab, setCurrentTab] = useState(0);
+    const [currentTab, setCurrentTab] = useState<number>(0);
+    const [element, setElemet] = useState<JSX.Element>();
+    let clicked = 0;
+    //기본화면 설정
+    useEffect(() => {
+        setElemet(tabs[0].element);
+    }, [])
     //탭 클릭
-    const recentStore = (index:number) => {
-        setCurrentTab(index)
-        arr.map((res,i) => {
-            if(index === i) {
-                res.checkClick((index));
-            } else {
-                res.checkClick((index));
-            }
-        })
+    const recentStore = (e:React.MouseEvent<HTMLElement>) => {
+        //클릭하면 clicked에 몇번째 애를 클릭했는지 알려줘야함.
+        let index = Number(e.currentTarget.getAttribute('value'));
+        clicked = index;
+        setCurrentTab(index);
+        {
+            tabs.map((res,i) => (
+                clicked === i ? setElemet(res.element) : null
+            ))
+        }
     }
 
     return <>
         <StyleModalUl>
             {
-                arr.map((res,i) => (
-                    <StyleModalLi onClick={() => recentStore(i)} key={i} className={currentTab === i ? 'active' : 'tab'}>
+                tabs.map((res,i) => (
+                    <StyleModalLi onClick={recentStore} key={i} value={i} className={currentTab === i ? 'active' : 'tab'}>
                         <StyleModalTab>{res.content}</StyleModalTab>
                     </StyleModalLi>
                 ))
             }
         </StyleModalUl>
+        {element}
     </>
 }
+
+export default ModalTab;

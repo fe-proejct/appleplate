@@ -1,7 +1,7 @@
 import { useState } from "react"
 import styled from "styled-components"
 import { myPage, recentHistory, wishLocation } from "../../constants/constant"
-import { ModalTab } from "../ui/Modal/ModalTab"
+import ModalTab from "../ui/Modal/ModalTab"
 import { ProfileRecent } from "./ProfileRecent"
 import { WishWrap } from "./WishWrap"
 
@@ -39,22 +39,17 @@ const StyleMyPage = styled.footer`
     cursor:pointer;
 `
 export const ProfileModal = () => {
-    const [click, setClick] = useState<number>(0);
+    //const [click, setClick] = useState<number>(0);
     //찜 목록에 값이 들어간다면 값의 유무에 따라 
     
     const tabs = [
-        { key: 0, content: recentHistory, checkClick: setClick, element: <ProfileRecent key={0}/> },
-        { key: 1, content: wishLocation, checkClick: setClick, element: <WishWrap key={1}/> },
+        { key: 0, content: recentHistory, element: <ProfileRecent key={0}/> },
+        { key: 1, content: wishLocation, element: <WishWrap key={1}/> },
     ];
 
     return <StyleProfileModal>
         <StyleProfileArrow></StyleProfileArrow>
-        <ModalTab arr={tabs} />
-        {
-            tabs.map((res,i) => (
-                click === i ? (res.element) : null
-            ))
-        }
+        <ModalTab tabs={tabs} />
         <StyleMyPage>
             {myPage}
         </StyleMyPage>

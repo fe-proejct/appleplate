@@ -7,6 +7,7 @@ export interface MakingProps {
     openCheck:React.Dispatch<React.SetStateAction<Boolean>>;
     closeCheck:Boolean;
     name:string;
+    element:JSX.Element;
 }
 
 const StyleMaskingPage = styled.div`
@@ -26,7 +27,7 @@ const StyleMaskingDiv = styled.div`
 
 export const MaskingPage = (props: MakingProps) => {
     const [closeModalData, setCloseModalData] = useState<Boolean>(props.closeCheck);
-    const {openCheck, closeCheck, name} = props
+    const {openCheck, closeCheck} = props
     const closeModal = () => {
         setCloseModalData(!closeModalData);
         openCheck(!closeModalData);
