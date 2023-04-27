@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     --background-color: #242424;
-    color: black;
+    color: ${({ theme }) => theme.colors.primaryText};
   }
 
   :root {
@@ -27,6 +27,15 @@ const GlobalStyle = createGlobalStyle`
   a {
     font-weight: 500;
     text-decoration: inherit;
+    color: ${({ theme }) => theme.colors.primaryText};
+  }
+
+  button {
+    border: 0;
+  }
+
+  input { 
+    outline: 0;
   }
   
   * {
