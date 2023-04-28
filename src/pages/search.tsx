@@ -1,13 +1,19 @@
 import { useParams } from "react-router-dom";
 import { test } from "../store/slice/TestSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
+import styled from "styled-components";
+
+const StyleSearchMain = styled.div`
+  height:100vh;
+  width:100vw;
+`
 
 export default function Search() {
   const { value } = useParams();
   const dispatch = useAppDispatch();
   const text = useAppSelector((state) => state.testReducer.value);
   return (
-    <div>
+    <StyleSearchMain>
       {value}
       <div>
         <button
@@ -20,6 +26,6 @@ export default function Search() {
         검색화면
       </div>
       {text}
-    </div>
+    </StyleSearchMain>
   );
 }
