@@ -20,22 +20,15 @@ export default function KakaoMap({
 
     useEffect(() => {
         if (container.current == null) return;
-        loadKakaoMapscript(
-            container.current,
-            (map) => {
-                // setMap(map);
-                onCreate(map);
-            });
+        loadKakaoMapscript(container.current, onCreate);
     }, []);
 
 
 
     const setMarker = (markerPosition: Marker, map?: kakao.maps.Map) => {
         if (map == null) return;
-
         const position = new kakao.maps.LatLng(markerPosition.lat, markerPosition.lng);
         const marker = new kakao.maps.Marker({ position });
-        console.log(markerPosition);
         marker.setMap(map);
     }
 
