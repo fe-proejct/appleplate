@@ -1,16 +1,46 @@
 import { Map, MapMarker } from "react-kakao-maps-sdk";
-import { KakaoMapOptions } from "./KakaoMap.options";
-import { useCallback, useMemo, useRef } from "react";
+import { KakaoMapOptions, Marker } from "./KakaoMap.options";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { loadKakaoMapscript } from "./KakaoMap.load";
+import styled from "styled-components";
+
+
+const MapContainer = styled.div`
+    width: 100%;
+    height: 100%;
+`;
 
 export default function KakaoMap({
     options
 }: {
     options: KakaoMapOptions
 }) {
-    const map = useRef<kakao.maps.Map>(null);
+    // const [map, setMap] = useState<kakao.maps.Map>();
+    const container = useRef(null);
 
+    useEffect(() => {
+        if (container.current == null) return;
+        loadKakaoMapscript(
+            container.current,
+            (map) => {
+                // setMap(map);
+                onCreate(map);
+            });
+    }, []);
+
+
+
+    const setMarker = (markerPosition: Marker, map?: kakao.maps.Map) => {
+        if (map == null) return;
+
+        const position = new kakao.maps.LatLng(markerPosition.lat, markerPosition.lng);
+        const marker = new kakao.maps.Marker({ position });
+        console.log(markerPosition);
+        marker.setMap(map);
+    }
 
     const onCreate = (map: kakao.maps.Map) => {
+        options.markers?.forEach(e => setMarker(e, map));
         setBounds(map);
     }
 
@@ -33,16 +63,16 @@ export default function KakaoMap({
 
     }, [options.markers]);
 
+    // const centerPosition = useMemo(() => {
+    //     // if (map == null) return null;
+    //     const [s, n, w, e] = getSNWE();
+    //     const center = new kakao.maps.LatLng(
+    //         (w + e) / 2,
+    //         (n + s) / 2,
+    //     );
 
-    const centerPosition = useMemo(() => {
-        const [s, n, w, e] = getSNWE();
-        const center = new kakao.maps.LatLng(
-            (w + e) / 2,
-            (n + s) / 2,
-        );
-
-        return center;
-    }, [options.markers]);
+    //     return center;
+    // }, [options.markers]);
 
     const setBounds = (map: kakao.maps.Map) => {
         const [s, n, w, e] = getSNWE();
@@ -53,21 +83,5 @@ export default function KakaoMap({
         map.setBounds(bounds, 20);
     }
 
-    return (
-        <Map
-            ref={map}
-            onCreate={onCreate}
-            center={{
-                lat: centerPosition?.getLat(),
-                lng: centerPosition?.getLng()
-            }}
-            style={{ width: "100%", height: "100%" }} >
-            {
-                options.markers?.map(e => {
-                    return <MapMarker key={e.lat + e.lng}
-                        position={{ lat: e.lat, lng: e.lng }} />
-                })
-            }
-        </Map>
-    )
+    return (<MapContainer ref={container} />)
 }

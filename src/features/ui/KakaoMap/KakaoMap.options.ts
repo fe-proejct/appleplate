@@ -1,4 +1,4 @@
-interface Marker {
+export interface Marker {
 
     /** 위도 */
     lat: number;
