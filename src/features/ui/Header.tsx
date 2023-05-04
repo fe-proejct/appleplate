@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { LogoText } from "../../constants/constant";
-import ModalPortal from "./Modal/ModalPortal";
-import { MaskingPage } from "./Modal/MaskingPage";
 import { ProfileModal } from "../headerModal/ProfileModal";
+import { MaskingPage } from "./Modal/MaskingPage";
+import ModalPortal from "./Modal/ModalPortal";
 
 const StyledHeader = styled.header`
   background-color: #fff;
@@ -116,42 +116,46 @@ const StyleProfileImg = styled.img`
   cursor: pointer;
 `;
 const StyleHistoryCnt = styled.span`
-    border:1px solid ${(props) => props.theme.colors.primary};
-    width: 24px;
-    height:24px;
-    border-radius:15px;
-    position:absolute;
-    top:5px;
-    left:45px;
-    background-color: ${(props) => props.theme.colors.primary};
-    color: ${(props) => props.theme.colors.second};
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-weight:600;
-`
+  border: 1px solid ${(props) => props.theme.colors.primary};
+  width: 24px;
+  height: 24px;
+  border-radius: 15px;
+  position: absolute;
+  top: 5px;
+  left: 45px;
+  background-color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.second};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+`;
 
 export default function Header() {
-    const [openProfileModal, setOpenProfileModal] = useState<Boolean>(false);
+  const [openProfileModal, setOpenProfileModal] = useState<boolean>(false);
 
-    const profileModal = () => {
-      setOpenProfileModal(!openProfileModal);
-    }
-    return (
-        <StyledHeader>
-            <StyleLogo href="#">
-                { LogoText }
-            </StyleLogo>
-            <StyleNav>
-              <StyleNavImg src="/icons/menu.png"/>
-            </StyleNav>
-            <StyleProfileList>
-                <StyleProfileImg src="/icons/profile.png" onClick={profileModal}>
-                </StyleProfileImg>
-                <ModalPortal>
-                  {openProfileModal && (<MaskingPage openCheck={setOpenProfileModal} closeCheck={openProfileModal} name={'profile'} element={<ProfileModal/>}/>)}
-                </ModalPortal>
-            </StyleProfileList>
-        </StyledHeader>
-    )
+  const profileModal = () => {
+    setOpenProfileModal(!openProfileModal);
+  };
+
+  return (
+    <StyledHeader>
+      <StyleLogo href="#">{LogoText}</StyleLogo>
+      <StyleNav>
+        <StyleNavImg src="/icons/menu.png" />
+      </StyleNav>
+      <StyleProfileList>
+        <StyleProfileImg src="/icons/profile.png" onClick={profileModal} />
+        <ModalPortal>
+          {openProfileModal && (
+            <MaskingPage
+              open={openProfileModal}
+              element={<ProfileModal />}
+              onClose={profileModal}
+            />
+          )}
+        </ModalPortal>
+      </StyleProfileList>
+    </StyledHeader>
+  );
 }
