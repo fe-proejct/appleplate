@@ -99,10 +99,12 @@ export default function Carousel({
   option?: CarousleOptions | undefined;
 }) {
   const classes = {
-    pagination: `splide__pagination ${option?.showPageNation ?? true ? "" : "pagenation"
-      }  `,
-    arrow: `splide__arrow ${option?.showDisabledArrow ?? true ? "" : "custom_arrow"
-      }`,
+    pagination: `splide__pagination ${
+      option?.showPageNation ?? true ? "" : "pagenation"
+    }  `,
+    arrow: `splide__arrow ${
+      option?.showDisabledArrow ?? true ? "" : "custom_arrow"
+    }`,
     page: "page_button",
   };
 

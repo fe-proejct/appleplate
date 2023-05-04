@@ -23,7 +23,7 @@ const device = {
 const sprite = {
   desktop: "/images/sprites_desktop.png",
   mobile: "/images/sprites_mobile.png",
-}
+};
 
 export type ColorsTypes = typeof colors;
 export type DeviceTypes = typeof device;

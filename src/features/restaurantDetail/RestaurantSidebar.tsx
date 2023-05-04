@@ -8,10 +8,9 @@ const StyledRestaurantSidebar = styled.div`
   float: right;
   width: 400px;
 
-
-  @media  ${e => e.theme.device.mobile} {
+  @media ${(e) => e.theme.device.mobile} {
     display: none;
-    }
+  }
 `;
 
 const KakaoMapWrap = styled.div`
@@ -29,9 +28,9 @@ export default function RestaurantSidebar() {
       { lat: 33.604, lng: 126.795841 },
       { lat: 33.55635, lng: 126.795841 },
       { lat: 35.55605, lng: 127.795841 },
-      { lat: 33.55605, lng: 125.795841 }
-    ]
-  }
+      { lat: 33.55605, lng: 125.795841 },
+    ],
+  };
 
   return (
     <StyledRestaurantSidebar>
