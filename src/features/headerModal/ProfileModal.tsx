@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { myPage, recentHistory, wishLocation } from "../../constants/constant";
 import Tab from "../ui/Tab";

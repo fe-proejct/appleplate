@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import RestaurantDetailPhotos from "./RestaurantDetailPhotos";
 import RestaurantDetailTable from "./RestaurantDetailTable";
-import RestaurantSidebar from "./RestaurantSidebar";
 import RestaurantHeader from "./RestaurantHeader";
+import RestaurantSidebar from "./RestaurantSidebar";
 import RestaurantReview from "./review/RestaurantReview";
 
 const StyledRestaurantDetail = styled.div`

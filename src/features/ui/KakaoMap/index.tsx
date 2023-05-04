@@ -1,8 +1,8 @@
+import { useCallback, useEffect, useRef } from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
-import { KakaoMapOptions, Marker } from "./KakaoMap.options";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { loadKakaoMapscript } from "./KakaoMap.load";
 import styled from "styled-components";
+import { loadKakaoMapscript } from "./KakaoMap.load";
+import { KakaoMapOptions, Marker } from "./KakaoMap.options";
 
 const MapContainer = styled.div`
   width: 100%;

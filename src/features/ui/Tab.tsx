@@ -17,7 +17,7 @@ const StyleModalLi = styled.li`
   @media ${(props) => props.theme.device.desktop} {
     width: 100%;
     height: ${(props) =>
-      props.className?.includes("active") ? "53px" : "50px"};
+    props.className?.includes("active") ? "53px" : "50px"};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +25,7 @@ const StyleModalLi = styled.li`
     font-weight: 600;
     color: ${(props) => props.theme.colors.primary};
     border-bottom: ${(props) =>
-      props.className?.includes("active") ? "3px solid red" : "none"};
+    props.className?.includes("active") ? "3px solid red" : "none"};
     margin-bottom: 3px;
   }
 `;
