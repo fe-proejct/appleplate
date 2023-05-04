@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
 import { test } from "../store/slice/TestSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
-import styled from "styled-components";
 
 const StyleSearchMain = styled.div`
-  height:100vh;
-  width:100vw;
-`
+  height: 100vh;
+  width: 100vw;
+`;
 
 export default function Search() {
   const { value } = useParams();

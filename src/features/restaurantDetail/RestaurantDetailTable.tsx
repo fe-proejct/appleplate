@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const TableWrap = styled.section`
-  padding : 15px 0;
+  padding: 15px 0;
   border-top: 1px solid #e9e9e9;
   border-bottom: 1px solid #e9e9e9;
   margin: 15px 20px;
@@ -41,18 +41,20 @@ const StyledDetailTable = styled.table`
   }
 `;
 
-const StyledAdress = styled.tr`
-
-`;
+const StyledAdress = styled.tr``;
 
 function Adress() {
-  return <StyledAdress>
-    <th>주소</th>
-    <td>충청남도 천안시 서북구 성환읍 성환중앙로 33<br />
-      <span className="rectangle">지번</span>
-      <span >충청남도 천안시 서북구 성환읍 성환리 449-19</span>
-    </td>
-  </StyledAdress>
+  return (
+    <StyledAdress>
+      <th>주소</th>
+      <td>
+        충청남도 천안시 서북구 성환읍 성환중앙로 33
+        <br />
+        <span className="rectangle">지번</span>
+        <span>충청남도 천안시 서북구 성환읍 성환리 449-19</span>
+      </td>
+    </StyledAdress>
+  );
 }
 
 export default function RestaurantDetailTable() {

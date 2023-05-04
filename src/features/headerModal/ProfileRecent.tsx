@@ -12,28 +12,18 @@ const StyleModalClear = styled.span`
 `;
 const StyleItemList = styled.ul`
   margin: 5px 0 10px 15px;
-  border: 1px solid black;
   width: 294px;
   height: 380px;
   overflow-y: auto;
 `;
 
 export const ProfileRecent = () => {
-  const arr = [1,2,3,4,5];
+  const arr = [1, 2, 3, 4, 5];
 
-  return <div>
-    <StyleModalClear>
-      {clearAll}
-    </StyleModalClear>
-    <StyleItemList>
-      {
-        arr.map((res,i) => (
-          HistoryModal(i)
-        ))
-      }
-            
-    </StyleItemList>
-  </div>;
+  return (
+    <div>
+      <StyleModalClear>{clearAll}</StyleModalClear>
+      <StyleItemList>{arr.map((res, i) => HistoryModal(i))}</StyleItemList>
+    </div>
   );
 };
-;
