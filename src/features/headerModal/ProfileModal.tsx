@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-import { useState } from "react";
-import styled from "styled-components";
-import { myPage, recentHistory, wishLocation } from "../../constants/constant";
-import ModalTab from "../ui/Modal/ModalTab";
-=======
 import styled from "styled-components";
 import { myPage, recentHistory, wishLocation } from "../../constants/constant";
 import Tab from "../ui/Tab";
->>>>>>> develop
 import { ProfileRecent } from "./ProfileRecent";
 import { WishWrap } from "./WishWrap";
 
