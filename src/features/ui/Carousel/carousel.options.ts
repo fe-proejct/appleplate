@@ -13,7 +13,7 @@ interface CarousleOptions extends Options {
 
   /**
    * 더 이상 갈 수 있는 페이지가 없을때 반투명 상태의 화살표를 보여줄건지의 여부입니다
-   * - default : `true`
+   * @default true
    */
   showDisabledArrow?: boolean | undefined;
 
@@ -49,7 +49,17 @@ interface CarousleOptions extends Options {
   /**
    * 양 옆에 `Padding` 을 줍니다
    */
-  padding?: number | string;
+  paddingHorizontal?: number | string;
+
+  /**
+   * 아래에 `Padding` 을 줍니다
+   */
+  paddingBottom?: number | string;
+
+  /**
+   * 위에 `Padding` 을 줍니다
+   */
+  paddingTop?: number | string;
 }
 
 export default CarousleOptions;
