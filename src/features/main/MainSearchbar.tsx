@@ -1,8 +1,8 @@
-import { useCallback, useState } from "react";
 import styled from "styled-components";
 import { MaskingPage } from "../ui/Modal/MaskingPage";
 import ModalPortal from "../ui/Modal/ModalPortal";
 import Tab from "../ui/Tab";
+import useSearchbar from "./useSearchbar";
 
 const SearchBarStyle = styled.form`
   --height: 54px;
@@ -116,27 +116,14 @@ const SearchBarStyle = styled.form`
 `;
 
 function MainSearchBar() {
-  const [keyword, setKeyword] = useState("");
-  const [isAutocomplete, setAutocomplete] = useState(false);
-
-  const handleChangeInput = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setKeyword(e.target.value);
-    },
-    []
-  );
-
-  const handleClickButton = useCallback(() => {
-    setKeyword("");
-  }, []);
-
-  const openModal = useCallback(() => {
-    setAutocomplete(true);
-  }, []);
-
-  const closeModal = useCallback(() => {
-    setAutocomplete(false);
-  }, []);
+  const {
+    keyword,
+    isAutocomplete,
+    handleChangeInput,
+    onClear,
+    onOpenAutoComplete,
+    onCloseAutoComplete,
+  } = useSearchbar();
 
   const tabs = [
     { key: 0, content: "추천 검색어", element: <div></div> },
@@ -161,10 +148,10 @@ function MainSearchBar() {
             value={keyword}
             placeholder="지역, 식당 또는 음식"
             onChange={handleChangeInput}
-            onClick={openModal}
+            onClick={onOpenAutoComplete}
           />
           {keyword ? (
-            <button type="button" className="clear" onClick={handleClickButton}>
+            <button type="button" className="clear" onClick={onClear}>
               CLEAR
             </button>
           ) : null}
@@ -177,7 +164,7 @@ function MainSearchBar() {
             {isAutocomplete && (
               <MaskingPage
                 open={isAutocomplete}
-                onClose={closeModal}
+                onClose={onCloseAutoComplete}
                 element={
                   <div
                     style={{
