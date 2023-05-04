@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import styled from "styled-components";
 import { MaskingPage } from "../ui/Modal/MaskingPage";
 import ModalPortal from "../ui/Modal/ModalPortal";
+import Tab from "../ui/Tab";
 
 const SearchBarStyle = styled.form`
   --height: 54px;
@@ -88,8 +89,8 @@ const SearchBarStyle = styled.form`
 
       label {
         .search-icon {
-          background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
-          background-size: 635px 609px;
+          background-image: url(${(e) => e.theme.sprite.mobile});
+          background-position: -107px -587px;
           width: 19px;
           height: 20px;
         }
@@ -137,6 +138,12 @@ function MainSearchBar() {
     setAutocomplete(false);
   }, []);
 
+  const tabs = [
+    { key: 0, content: "추천 검색어", element: <div></div> },
+    { key: 1, content: "인기 검색어", element: <div></div> },
+    { key: 2, content: "최근 검색어", element: <div></div> },
+  ];
+
   return (
     <SearchBarStyle
       onSubmit={(e) => {
@@ -171,7 +178,17 @@ function MainSearchBar() {
               <MaskingPage
                 open={isAutocomplete}
                 onClose={closeModal}
-                element={<div>test</div>}
+                element={
+                  <div
+                    style={{
+                      top: "337px",
+                      left: "262px",
+                      position: "absolute",
+                    }}
+                  >
+                    <Tab tabs={tabs} />
+                  </div>
+                }
               />
             )}
           </ModalPortal>
