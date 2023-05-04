@@ -51,7 +51,7 @@ const RestaurantCardStyle = styled.figure`
         content: "";
         display: inline-block;
         margin-right: 3px;
-        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+        background-image: url(${(e) => e.theme.sprite.mobile});
         background-position: -618px -477px;
         width: 13px;
         height: 9px;

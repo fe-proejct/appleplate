@@ -29,7 +29,7 @@ const SearchBarStyle = styled.form`
       .search-icon {
         display: flex;
         flex-shrink: 0;
-        background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+        background-image: url(${(e) => e.theme.sprite.desktop});
         background-position: -935px -620px;
         width: 30px;
         height: 31px;
