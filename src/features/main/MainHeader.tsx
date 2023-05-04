@@ -33,6 +33,16 @@ const HeaderStyle = styled.header`
     text-align: center;
     font-weight: 600;
   }
+
+  @media ${(props) => props.theme.device.mobile} {
+    padding: 70px 0px;
+
+    > p,
+    h1 {
+      font-size: 1.2em;
+      line-height: 1.5;
+    }
+  }
 `;
 
 export default function MainHeader({

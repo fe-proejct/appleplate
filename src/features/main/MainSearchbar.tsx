@@ -70,6 +70,46 @@ const SearchBarStyle = styled.form`
   legend {
     display: none;
   }
+
+  @media ${(props) => props.theme.device.mobile} {
+    --height: 48px;
+    --sidePadding: 15px;
+    --fontSize: 0.813rem;
+
+    width: calc(100% - var(--sidePadding) * 2);
+    height: var(--height);
+    margin: 34px var(--sidePadding) 0;
+    border-radius: calc(var(--height) / 2);
+
+    fieldset {
+      padding-left: 40px;
+
+      label {
+        .search-icon {
+          background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile@2x.png);
+          background-size: 635px 609px;
+          width: 19px;
+          height: 20px;
+        }
+
+        input {
+          padding: 0px 10px;
+          font-size: var(--fontSize);
+        }
+
+        > button {
+          font-size: 14px;
+        }
+      }
+
+      > button {
+        width: 110px;
+        height: 100%;
+        font-size: var(--fontSize);
+        border-radius: calc(var(--height) / 2);
+      }
+    }
+  }
 `;
 
 function MainSearchBar() {
