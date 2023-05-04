@@ -1,5 +1,7 @@
 import { useCallback, useState } from "react";
 import styled from "styled-components";
+import { MaskingPage } from "../ui/Modal/MaskingPage";
+import ModalPortal from "../ui/Modal/ModalPortal";
 
 const SearchBarStyle = styled.form`
   --height: 54px;
@@ -114,6 +116,7 @@ const SearchBarStyle = styled.form`
 
 function MainSearchBar() {
   const [keyword, setKeyword] = useState("");
+  const [isAutocomplete, setAutocomplete] = useState(false);
 
   const handleChangeInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -124,6 +127,14 @@ function MainSearchBar() {
 
   const handleClickButton = useCallback(() => {
     setKeyword("");
+  }, []);
+
+  const openModal = useCallback(() => {
+    setAutocomplete(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setAutocomplete(false);
   }, []);
 
   return (
@@ -143,6 +154,7 @@ function MainSearchBar() {
             value={keyword}
             placeholder="지역, 식당 또는 음식"
             onChange={handleChangeInput}
+            onClick={openModal}
           />
           {keyword ? (
             <button type="button" className="clear" onClick={handleClickButton}>
@@ -150,10 +162,19 @@ function MainSearchBar() {
             </button>
           ) : null}
 
-          <div className="keywordSuggester--container">
+          {/* <div className="keywordSuggester--container">
             <div className="keywordSuggester--tab"></div>
             <div className="keywordSuggester--tabBoard"></div>
-          </div>
+          </div> */}
+          <ModalPortal>
+            {isAutocomplete && (
+              <MaskingPage
+                open={isAutocomplete}
+                onClose={closeModal}
+                element={<div>test</div>}
+              />
+            )}
+          </ModalPortal>
         </label>
         <button type="submit">검색</button>
       </fieldset>
