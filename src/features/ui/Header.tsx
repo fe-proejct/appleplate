@@ -4,6 +4,8 @@ import { LogoText } from "../../constants/constant";
 import ModalPortal from "./Modal/ModalPortal";
 import { MaskingPage } from "./Modal/MaskingPage";
 import { ProfileModal } from "../headerModal/ProfileModal";
+import { MobileMenuList } from "./Modal/MobileMenuList";
+import { MobileMenu } from "./Modal/MobileMenu";
 
 const StyledHeader = styled.header`
   background-color: #fff;
@@ -78,6 +80,7 @@ const StyleNavImg = styled.img`
   @media ${(props) => props.theme.device.mobile} {
     width: 85%;
     height: 100%;
+    cursor:pointer;
   }
 `;
 
@@ -133,21 +136,28 @@ const StyleHistoryCnt = styled.span`
 
 export default function Header() {
     const [openProfileModal, setOpenProfileModal] = useState<Boolean>(false);
+    const [openMenuModal, setOpenMenuModal] = useState<Boolean>(false);
 
     const profileModal = () => {
       setOpenProfileModal(!openProfileModal);
     }
+
+    const menuModal = () => {
+      setOpenMenuModal(!openMenuModal);
+    }
     return (
         <StyledHeader>
-            <StyleLogo href="#">
+            <StyleLogo href="/">
                 { LogoText }
             </StyleLogo>
             <StyleNav>
-              <StyleNavImg src="/icons/menu.png"/>
+              <StyleNavImg src="/icons/menu.png" onClick={menuModal} />
+              <ModalPortal>
+                { openMenuModal && (<MobileMenu openCheck={setOpenMenuModal} closeCheck={openMenuModal} element={<MobileMenuList/>}/>) }
+              </ModalPortal>
             </StyleNav>
             <StyleProfileList>
-                <StyleProfileImg src="/icons/profile.png" onClick={profileModal}>
-                </StyleProfileImg>
+                <StyleProfileImg src="/icons/profile.png" onClick={profileModal}/>
                 <ModalPortal>
                   {openProfileModal && (<MaskingPage openCheck={setOpenProfileModal} closeCheck={openProfileModal} name={'profile'} element={<ProfileModal/>}/>)}
                 </ModalPortal>

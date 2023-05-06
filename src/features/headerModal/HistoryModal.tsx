@@ -1,3 +1,4 @@
+import { useState } from "react"
 import styled from "styled-components"
 
 const StyleItem = styled.li`
@@ -6,7 +7,6 @@ const StyleItem = styled.li`
     display:flex;
     justify-content:center;
     align-items:flex-start;
-    border:1px solid blue;
     margin: 5px 0;
 `
 
@@ -17,18 +17,23 @@ const StyleItemImg = styled.img`
 `
 
 const StyleItemContent = styled.div`
-    width:135px;
     height:86px;
-    border:1px solid black;
     display:flex;
-    justify-content:center;
     align-items:flex-start;
+    @media ${(props) => props.theme.device.desktop} {
+        width:135px;
+        justify-content:center;
+    }
+    @media ${(props) => props.theme.device.mobile} {
+        width:60%;
+        justify-content:flex-start;
+        margin-left:13px;
+    }
 `
 
 const StyleItemNameList = styled.div`
     width:80%;
     height:auto;
-    border:1px solid black;
 `
 
 const StyleItemName = styled.h3`
@@ -57,8 +62,12 @@ const StyleWishImg = styled.img`
 `
 
 export const HistoryModal = (i:number) => {
-    return <div key={i}>
-        <StyleItem>
+    const [select,setSelect] = useState<boolean>(false);
+
+    const wishSelect = () => {
+        setSelect(!select);
+    }
+    return <StyleItem key={i}>
             <StyleItemImg src="/images/gamjatang.jpeg" />
             <StyleItemContent>
                 <StyleItemNameList>
@@ -70,9 +79,8 @@ export const HistoryModal = (i:number) => {
                     </StyleItemAddress>
                 </StyleItemNameList>
             </StyleItemContent>
-            <StyleWish>
-                <StyleWishImg src="/images/star.png" />
+            <StyleWish onClick={wishSelect}>
+                <StyleWishImg src={select === false ? "/images/star.png" : "/images/star_color.png" } />
             </StyleWish>
         </StyleItem>
-    </div>
 }

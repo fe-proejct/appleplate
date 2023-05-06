@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import { useState, useRef, useEffect } from "react";
-import debug from "debug";
+import { useState, useEffect } from "react";
 
 const StyleModalUl = styled.ul`
-    @media ${(props) => props.theme.device.desktop} {
         width:100%;
         height:50px;
         display:flex;
@@ -11,10 +9,8 @@ const StyleModalUl = styled.ul`
         background-color:#fff;
         z-index:7;
         margin-bottom:3px;
-    }
 `
 const StyleModalLi = styled.li`
-    @media ${(props) => props.theme.device.desktop} {
         width:100%;
         height:${(props) => props.className?.includes('active') ? '53px' : "50px"};
         display:flex;
@@ -25,7 +21,7 @@ const StyleModalLi = styled.li`
         color: ${(props) => props.theme.colors.primary};
         border-bottom: ${(props) => props.className?.includes('active') ? '3px solid red' : "none"};
         margin-bottom:3px;
-    }
+    
 `
 const StyleModalTab = styled.div`
     text-decoration: none;

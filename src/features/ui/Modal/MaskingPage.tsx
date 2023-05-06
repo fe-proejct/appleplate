@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { ProfileModal } from "../../headerModal/ProfileModal";
 import { useEffect, useState } from "react";
 import { Modal } from "./Modal";
+import { useAppSelector } from "../../../store/store";
+import { MyPage } from "./MyPage";
+import { WithDrawalModal } from "../../headerModal/WithDrawalModal";
 
 export interface MakingProps {
     openCheck:React.Dispatch<React.SetStateAction<Boolean>>;
@@ -27,12 +30,12 @@ const StyleMaskingDiv = styled.div`
 
 export const MaskingPage = (props: MakingProps) => {
     const [closeModalData, setCloseModalData] = useState<Boolean>(props.closeCheck);
-    const {openCheck, closeCheck} = props
+    const {openCheck, closeCheck} = props;
     const closeModal = () => {
         setCloseModalData(!closeModalData);
         openCheck(!closeModalData);
     }
-
+    
     //스크롤 막기
     useEffect(() => {
         document.body.style.cssText = `
@@ -50,9 +53,8 @@ export const MaskingPage = (props: MakingProps) => {
         <StyleMaskingDiv>
             { closeCheck === closeModalData && (<StyleMaskingPage onClick={closeModal}/>) }
             {
-                closeCheck === closeModalData && (
-                    <Modal value={props}/>
-                )
+                closeCheck === closeModalData && (<Modal value={props}/>)
+                
             }
         </StyleMaskingDiv>
     );
