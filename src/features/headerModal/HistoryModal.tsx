@@ -1,14 +1,14 @@
-import styled from "styled-components";
+import { useState } from "react"
+import styled from "styled-components"
 
 const StyleItem = styled.li`
-  width: 100%;
-  height: 90px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  border: 1px solid blue;
-  margin: 5px 0;
-`;
+    width:100%;
+    height:90px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    margin: 5px 0;
+`
 
 const StyleItemImg = styled.img`
   width: 105px;
@@ -17,19 +17,24 @@ const StyleItemImg = styled.img`
 `;
 
 const StyleItemContent = styled.div`
-  width: 135px;
-  height: 86px;
-  border: 1px solid black;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-`;
+    height:86px;
+    display:flex;
+    align-items:flex-start;
+    @media ${(props) => props.theme.device.desktop} {
+        width:135px;
+        justify-content:center;
+    }
+    @media ${(props) => props.theme.device.mobile} {
+        width:60%;
+        justify-content:flex-start;
+        margin-left:13px;
+    }
+`
 
 const StyleItemNameList = styled.div`
-  width: 80%;
-  height: auto;
-  border: 1px solid black;
-`;
+    width:80%;
+    height:auto;
+`
 
 const StyleItemName = styled.h3`
   width: 100%;
@@ -56,21 +61,26 @@ const StyleWishImg = styled.img`
   height: 100%;
 `;
 
-export const HistoryModal = (i: number) => {
-  return (
-    <div key={i}>
-      <StyleItem>
-        <StyleItemImg src="/images/gamjatang.jpeg" />
-        <StyleItemContent>
-          <StyleItemNameList>
-            <StyleItemName>aaavvv</StyleItemName>
-            <StyleItemAddress>강원도</StyleItemAddress>
-          </StyleItemNameList>
-        </StyleItemContent>
-        <StyleWish>
-          <StyleWishImg src="/images/star.png" />
-        </StyleWish>
-      </StyleItem>
-    </div>
-  );
-};
+export const HistoryModal = (i:number) => {
+    const [select,setSelect] = useState<boolean>(false);
+
+    const wishSelect = () => {
+        setSelect(!select);
+    }
+    return <StyleItem key={i}>
+            <StyleItemImg src="/images/gamjatang.jpeg" />
+            <StyleItemContent>
+                <StyleItemNameList>
+                    <StyleItemName>
+                        aaavvv
+                    </StyleItemName>
+                    <StyleItemAddress>
+                        강원도
+                    </StyleItemAddress>
+                </StyleItemNameList>
+            </StyleItemContent>
+            <StyleWish onClick={wishSelect}>
+                <StyleWishImg src={select === false ? "/images/star.png" : "/images/star_color.png" } />
+            </StyleWish>
+        </StyleItem>
+}

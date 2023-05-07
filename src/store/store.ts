@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { TestSlice } from "./slice/TestSlice";
+import { WithDrawalSlice } from "./slice/WithDrawalSlice";
+import { ProfileSlice } from "./slice/ProfileSlice";
 
 export type RootState = ReturnType<typeof store.getState>;
 
@@ -8,6 +10,8 @@ export type RootState = ReturnType<typeof store.getState>;
 export const store = configureStore({
   reducer: {
     testReducer: TestSlice.reducer,
+    withdrawalReducer: WithDrawalSlice.reducer,
+    profileReducer: ProfileSlice.reducer
   },
 });
 
