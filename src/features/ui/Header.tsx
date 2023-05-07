@@ -1,11 +1,16 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { LogoText } from "../../constants/constant";
-import ModalPortal from "./Modal/ModalPortal";
-import { MaskingPage } from "./Modal/MaskingPage";
 import { ProfileModal } from "../headerModal/ProfileModal";
 import { MobileMenuList } from "./Modal/MobileMenuList";
 import { MobileMenu } from "./Modal/MobileMenu";
+import { MaskingPage } from "./Modal/MaskingPage";
+import ModalPortal from "./Modal/ModalPortal";
+import { useAppSelector } from "../../store/store";
+import { WithDrawalModal } from "../headerModal/WithDrawalModal";
+import { useDispatch } from "../../store/dispatch/Dispatch";
+import { withdrawal } from "../../store/slice/WithDrawalSlice";
+import { profile } from "../../store/slice/ProfileSlice";
 
 const StyledHeader = styled.header`
   background-color: #fff;
@@ -119,49 +124,70 @@ const StyleProfileImg = styled.img`
   cursor: pointer;
 `;
 const StyleHistoryCnt = styled.span`
-    border:1px solid ${(props) => props.theme.colors.primary};
-    width: 24px;
-    height:24px;
-    border-radius:15px;
-    position:absolute;
-    top:5px;
-    left:45px;
-    background-color: ${(props) => props.theme.colors.primary};
-    color: ${(props) => props.theme.colors.second};
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-weight:600;
-`
+  border: 1px solid ${(props) => props.theme.colors.primary};
+  width: 24px;
+  height: 24px;
+  border-radius: 15px;
+  position: absolute;
+  top: 5px;
+  left: 45px;
+  background-color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.second};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+`;
 
 export default function Header() {
-    const [openProfileModal, setOpenProfileModal] = useState<Boolean>(false);
-    const [openMenuModal, setOpenMenuModal] = useState<Boolean>(false);
+  const [openProfileModal, setOpenProfileModal] = useState<boolean>(false);
+  const [openMenuModal, setOpenMenuModal] = useState<boolean>(false);
+  let withdrawalCheck = useAppSelector((state) => state.withdrawalReducer.value);
+  let profileCheck = useAppSelector((state) => state.profileReducer.value);
+  const dispatch = useDispatch();
 
-    const profileModal = () => {
-      setOpenProfileModal(!openProfileModal);
-    }
-
-    const menuModal = () => {
-      setOpenMenuModal(!openMenuModal);
-    }
-    return (
-        <StyledHeader>
-            <StyleLogo href="/">
-                { LogoText }
-            </StyleLogo>
-            <StyleNav>
-              <StyleNavImg src="/icons/menu.png" onClick={menuModal} />
-              <ModalPortal>
-                { openMenuModal && (<MobileMenu openCheck={setOpenMenuModal} closeCheck={openMenuModal} element={<MobileMenuList/>}/>) }
-              </ModalPortal>
-            </StyleNav>
-            <StyleProfileList>
-                <StyleProfileImg src="/icons/profile.png" onClick={profileModal}/>
-                <ModalPortal>
-                  {openProfileModal && (<MaskingPage openCheck={setOpenProfileModal} closeCheck={openProfileModal} name={'profile'} element={<ProfileModal/>}/>)}
-                </ModalPortal>
-            </StyleProfileList>
-        </StyledHeader>
-    )
+  const profileModal = () => {
+    dispatch(profile(true));
+    dispatch(withdrawal(false));
+  }
+  const closeProfileModal = () => {
+    dispatch(profile(false));
+    dispatch(withdrawal(false));
+  };
+  const menuModal = () => {
+    setOpenMenuModal(!openMenuModal);
+  }
+  const closeWithdrawal = () => {
+    dispatch(withdrawal(false));
+    dispatch(profile(false));
+  }
+  return (
+    <StyledHeader>
+      <StyleLogo href="#">{LogoText}</StyleLogo>
+      <StyleNav>
+        <StyleNavImg src="/icons/menu.png" onClick={menuModal}/>
+        <ModalPortal>
+              { openMenuModal && (<MobileMenu onClose={menuModal} open={openMenuModal} element={<MobileMenuList/>}/>) }
+          </ModalPortal>
+      </StyleNav>
+      <StyleProfileList>
+        <StyleProfileImg src="/icons/profile.png" onClick={profileModal} />
+        <ModalPortal>
+          {profileCheck === true && withdrawalCheck === false ? (
+            <MaskingPage
+              open={profileCheck}
+              element={<ProfileModal />}
+              onClose={closeProfileModal}
+            />
+          ) : profileCheck === false && withdrawalCheck === true && (
+            <MaskingPage
+              open={withdrawalCheck}
+              element={<WithDrawalModal/>}
+              onClose={closeWithdrawal}
+            />
+            )}
+        </ModalPortal>
+      </StyleProfileList>
+    </StyledHeader>
+  );
 }

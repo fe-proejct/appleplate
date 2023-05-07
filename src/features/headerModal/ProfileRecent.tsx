@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import { clearAll } from "../../constants/constant";
 import { HistoryModal } from "./HistoryModal";
 
@@ -34,19 +34,11 @@ const StyleItemList = styled.ul`
 `
 
 export const ProfileRecent = () => {
-    const arr = [1,2,3,4,5];
+  const arr = [1, 2, 3, 4, 5];
 
     return <StyleProfileRecentWrap>
-        <StyleModalClear>
-            {clearAll}
-        </StyleModalClear>
-        <StyleItemList>
-            {
-                arr.map((res,i) => (
-                    HistoryModal(i)
-                ))
-            }
-            
+        <StyleModalClear>{clearAll}</StyleModalClear>
+        <StyleItemList>{arr.map((res,i) => (HistoryModal(i)))}
         </StyleItemList>
     </StyleProfileRecentWrap>
 }

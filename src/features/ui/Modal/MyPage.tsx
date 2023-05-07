@@ -1,9 +1,8 @@
 import styled from "styled-components"
 import { email, name, profileNotice } from "../../../constants/constant"
-import { useState } from "react"
 import { useDispatch } from "../../../store/dispatch/Dispatch"
 import { withdrawal } from "../../../store/slice/WithDrawalSlice"
-import { useAppSelector } from "../../../store/store"
+import { profile } from "../../../store/slice/ProfileSlice"
 
 const StyleMyPageContentWrap = styled.div`
     //데스크탑
@@ -165,6 +164,7 @@ export const MyPage = () => {
 
     const memberWithdrawal = () => {
         dispatch(withdrawal(true));
+        dispatch(profile(false));
     }
     return <> 
         <StyleHeaderWrap>내 정보</StyleHeaderWrap>

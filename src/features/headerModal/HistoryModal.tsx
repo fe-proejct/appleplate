@@ -11,10 +11,10 @@ const StyleItem = styled.li`
 `
 
 const StyleItemImg = styled.img`
-    width:105px;
-    height:86px;
-    cursor:pointer;
-`
+  width: 105px;
+  height: 86px;
+  cursor: pointer;
+`;
 
 const StyleItemContent = styled.div`
     height:86px;
@@ -37,29 +37,29 @@ const StyleItemNameList = styled.div`
 `
 
 const StyleItemName = styled.h3`
-    width:100%;
-    color:#000;
-    font-size:18px;
-    cursor:pointer;
-`
+  width: 100%;
+  color: #000;
+  font-size: 18px;
+  cursor: pointer;
+`;
 
 const StyleItemAddress = styled.span`
-    width:100%;
-    color:${(props) => props.theme.colors.secondText};
-    font-size:10px;
-`
+  width: 100%;
+  color: ${(props) => props.theme.colors.secondText};
+  font-size: 10px;
+`;
 
 const StyleWish = styled.button`
-    width:35px;
-    height:28px;
-    display:1px solid black;
-    background-color:transparent;
-    cursor:pointer;
-`
+  width: 35px;
+  height: 28px;
+  display: 1px solid black;
+  background-color: transparent;
+  cursor: pointer;
+`;
 const StyleWishImg = styled.img`
-    width:100%;
-    height:100%;
-`
+  width: 100%;
+  height: 100%;
+`;
 
 export const HistoryModal = (i:number) => {
     const [select,setSelect] = useState<boolean>(false);

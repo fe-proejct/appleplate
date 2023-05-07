@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { MobileMenuList } from "./MobileMenuList";
+import { MakingProps } from "./MaskingPage";
 
 export interface MenuProps {
     openCheck:React.Dispatch<React.SetStateAction<Boolean>>;
@@ -54,9 +55,7 @@ const StyleMenuWrap = styled.div`
     }
 `
 
-export const MobileMenu = (props:MenuProps) => {
-    const [closeModalData, setCloseModalData] = useState<Boolean>(props.closeCheck);
-    
+export const MobileMenu = (props:MakingProps) => {
     useEffect(() => {
         document.body.style.cssText = `
           position: fixed; 
@@ -68,14 +67,10 @@ export const MobileMenu = (props:MenuProps) => {
           window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
         };
     }, [])
-
-    const closeMenu = () => {
-        props.openCheck(!closeModalData);
-    }
     return <StyleMenuWrap>
         <header>
             <a href="#">Home</a>
-            <button onClick={closeMenu}>X</button>
+            <button onClick={props.onClose}>X</button>
         </header>
         <MobileMenuList/>
     </StyleMenuWrap>

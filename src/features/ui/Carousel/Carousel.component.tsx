@@ -1,10 +1,14 @@
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css/sea-green";
 import styled from "styled-components";
-import CarousleOptions from "../options/carouselOptions";
+import CarousleOptions from "./carousel.options";
 
 const CarouselWrap = styled.div<{
-  padding?: number | string;
+  padding?: {
+    bottom?: number | string | undefined,
+    top?: number | string | undefined,
+    horizontal?: number | string | undefined,
+  };
 }>`
   height: 100%;
 
@@ -14,11 +18,10 @@ const CarouselWrap = styled.div<{
   }
 
   .splide {
-    padding-top: 0;
-    padding-bottom: 0;
-
-    padding-right: ${(e) => e.padding ?? 0};
-    padding-left: ${(e) => e.padding ?? 0};
+    padding-top: ${(e) => e.padding?.top ?? 0};
+    padding-bottom: ${(e) => e.padding?.bottom ?? 0};;
+    padding-right: ${(e) => e.padding?.horizontal ?? 0};
+    padding-left: ${(e) => e.padding?.horizontal ?? 0};
 
     height: 100%;
     align-items: center;
@@ -42,7 +45,7 @@ const CarouselWrap = styled.div<{
       display: block;
       content: "";
       border-radius: 50%;
-      background-color: ${(e) => e.theme.colors.lightGrayBg};
+      background-color: #9b9b9b;
     }
   }
 
@@ -65,7 +68,9 @@ const CarouselWrap = styled.div<{
 
   .splide__arrow svg {
     fill: ${(e) => e.theme.colors.primary};
-
+    margin-bottom: 10px;
+    margin-top: ${(e) => e.padding?.top ?? 0};
+    margin-bottom: ${(e) => e.padding?.bottom ?? 0};;
     :hover {
       fill: ${(e) => e.theme.colors.second};
     }
@@ -74,7 +79,7 @@ const CarouselWrap = styled.div<{
 
 const ChildWrap = styled.div`
   height: 100%;
-  display: flex;
+  justify-content: center;
 
   > img {
     /* width: 100%; */
@@ -107,7 +112,11 @@ export default function Carousel({
   };
 
   return (
-    <CarouselWrap padding={option?.padding}>
+    <CarouselWrap padding={{
+      top: option?.paddingTop,
+      bottom: option?.paddingBottom,
+      horizontal: option?.paddingHorizontal,
+    }}>
       <Splide
         hasTrack={false}
         options={{

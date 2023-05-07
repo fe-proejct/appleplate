@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 const StyleNullWrap = styled.div`
     height:411px;
@@ -51,4 +51,4 @@ export const WishNull = () => {
             </div>
     </StyleNullWrap>
     </>
-}
+};

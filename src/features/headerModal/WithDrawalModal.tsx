@@ -1,30 +1,27 @@
 import styled from "styled-components"
 import { useDispatch } from "../../store/dispatch/Dispatch"
-import { useAppSelector } from "../../store/store"
 import { withdrawal } from "../../store/slice/WithDrawalSlice"
-import { MakingProps } from "../ui/Modal/MaskingPage"
 import { useEffect, useState } from "react"
 import { agreeText, withDrawalNotice1, withDrawalNotice2, withDrawalNotice3, withDrawalNotice4, withDrawalNotice5, withDrawalText } from "../../constants/constant"
 
 const StyleWithDrawalWrap = styled.div`
+    position:fixed;
     @media ${(props) => props.theme.device.desktop} {
-        position:absolute;
         top:10%;
         left:40%;
         width:414px;
         height:620px;
         background-color:#fff;
-        z-index:7;
+        z-index:5;
         border-radius:10px;  
     }
     @media ${(props) => props.theme.device.mobile} {
-        position:absolute;
         top:0%;
         left:0%;
         width:100%;
         height:100%;
         background-color:#fff;
-        z-index:7;
+        z-index:5;
         border-radius:0px;  
     }
 `
@@ -150,28 +147,22 @@ const StyleFooterCheckButton = styled.div`
     cursor:pointer;
 `
 
-interface ModalProps {
-    value:MakingProps;
-}
-
-export const WithDrawalModal = (propsData:ModalProps) => {
+export const WithDrawalModal = () => {
     const [checkAgree, setCheckAgree] = useState<boolean>(false);
-    let withdrawalCheck = useAppSelector((state) => state.withdrawalReducer.value);
-    let dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        setCheckAgree
+        setCheckAgree(false);
     }, [])
-    const closeWithdrawalModal = () => {
-        dispatch(withdrawal(!withdrawalCheck));
-        propsData.value.openCheck(false);
-    }
     const checkWithDraw = () => {
         setCheckAgree(!checkAgree)
     }
+    const closeWithdrawal = () => {
+        dispatch(withdrawal(false));
+    }
     return <StyleWithDrawalWrap>
         <StyleClose>
-            <button onClick={closeWithdrawalModal}>X</button>
+            <button onClick={closeWithdrawal}>X</button>
         </StyleClose>
         <StyleContentWrap>
             <StyleNotice>{withDrawalNotice1}</StyleNotice>

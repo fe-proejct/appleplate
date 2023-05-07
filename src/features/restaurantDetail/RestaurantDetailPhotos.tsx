@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Carousel from "../ui/Carousel/component/Carousel";
+import Carousel from "../ui/Carousel/Carousel.component";
 import "@splidejs/react-splide/css/sea-green";
 const StyledRestaurantDetailPhotos = styled.div`
   background-color: grey;
